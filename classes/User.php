@@ -1,40 +1,67 @@
 <?php
 
-class User
+class user
 {
-    public $id;
-    public $email;
-    public $username;
+    private  $id;
+    private $email;
+    private  $firstName;
+    private  $lastName;
     private $password;
+    private $reset_token;
+    private $reset_token_expires;
 
-    public function __construct($id)
+
+    static public function insert($firstName, $lastName, $password, $email)
     {
-        global $db;
+        global  $db;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $result = $db->query("SELECT * FROM users WHERE users_id = '$id'");
-        $user = $result->fetch_assoc();
+        $result = $db->query("SELECT COUNT(*) as total FROM users");
+        $row = $result->fetch_assoc();
+        $totalUsers = $row['total'];
 
-        $this->id = $user['users_id'];
-        $this->email = $user['users_email'];
-        $this->username = $user['users_username'];
-        $this->password = $user['users_password'];
+        if ($totalUsers === '0') {
+            $role = 'admin';
+        } else {
+            $role = 'author';
+        }
+
+        $sql = "INSERT INTO users (firstname, lastname, password, email, role) VALUES (?, ?, ?, ?, ?)";
+        $insert = $db->prepare($sql);
+        $insert->bind_param("sssss", $firstName, $lastName, $hashedPassword, $email, $role);
+        $insert->execute();
     }
 
-    static function getAll()
+    static public function signin($Password, $email)
     {
         global $db;
-        $result = $db->query("SELECT * FROM users");
+        $sql_code = "SELECT * FROM users WHERE email = ?";
+        $stmt = $db->prepare($sql_code);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $hashedPassword = $row['password'];
+            if (password_verify($Password, $hashedPassword)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    static public function logout()
+    {
+        session_destroy();
+        header("index.php?page=login");
+    }
+
+    static  public  function  getAll()
+    {
+        global $db;
+        $result = $db->query("SELECT * FROM  users");
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    function edit()
-    {
-        global $db;
-        return $db->query("UPDATE users SET users_email = '$this->email', users_username = '$this->username' WHERE users_id = '$this->id'");
-    }
-
-    public function setPassword($pwd)
-    {
-        $this->password = password_hash($pwd, PASSWORD_DEFAULT);
     }
 }

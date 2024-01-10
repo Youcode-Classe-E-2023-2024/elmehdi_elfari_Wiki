@@ -1,6 +1,7 @@
 <?php
 
 include_once 'init.php';
+include '_config/config.php';
 
 spl_autoload_register(function ($class) {
     include_once 'classes/' . $class . '.php';

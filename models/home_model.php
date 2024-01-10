@@ -9,5 +9,5 @@
 //$user->edit();
 //dd($user);
 
-$users = User::getAll();
+
 //dd($users);

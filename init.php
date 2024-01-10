@@ -6,7 +6,8 @@
  * @param $var
  * @return void
  */
-function dd($var) {
+function dd($var)
+{
     echo '<pre>';
     echo '<code>';
     var_dump($var);
@@ -15,8 +16,7 @@ function dd($var) {
     die();
 }
 
-function str_secure($str) {
+function str_secure($str)
+{
     return trim(htmlspecialchars($str));
 }
-
-$db = mysqli_connect('localhost', 'root', '', 'simple_mvc_db');

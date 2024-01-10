@@ -66,7 +66,7 @@
                                 <button name="submit" class="btn btn-success">Sign In</button>
                             </div>
                             <div class="mt-1 pb-2">
-                                Alrady have an account? <a href="login.php" class="text-decoration-none">Login</a>
+                                Alrady have an account? <a href="signin.php" class="text-decoration-none">Login</a>
                             </div>
                     </div>
                 </div>
@@ -76,7 +76,6 @@
             </div>
         </div>
     </div>
-    <!-- Add jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>

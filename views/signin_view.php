@@ -25,7 +25,7 @@
                 <div class="col-sm-4">
                     <div class="container bg-light p-4">
                         <p class="text-danger"><?php echo $unsuccessfulmsg ?> </p>
-                        <form action="index.php?page=login" method="POST">
+                        <form action="index.php?page=signin" method="POST">
                             <div class="mt-2 pb-2">
                                 <label for="email">Email:</label>
                                 <input type="email" name="email" class="form-control" placeholder="Enter your email">
@@ -49,7 +49,6 @@
             </div>
         </div>
     </div>
-    <!-- Add jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>

@@ -55,7 +55,7 @@ class Article extends Database
 
     public function deleteArticle($articleId)
     {
-        $this->query("DELETE FROM $this->tableName WHERE id = :id");
+        $this->query("DELETE FROM $this->tableName WHERE article_id  = :id");
         $this->bind(':id', $articleId);
         $this->execute();
     }

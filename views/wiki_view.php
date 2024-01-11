@@ -35,30 +35,26 @@
                 <a href="index.php?page=addarticle" class="btn btn-primary">Add New Article</a>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="article">
-                <h3>Article 1 Title</h3>
-                <p>Content of Article 1...</p>
-            </div>
-            <div class="article">
-                <h3>Article 2 Title</h3>
-                <p>Content of Article 2...</p>
-            </div>
-            <div class="article">
-                <h3>Article 3 Title</h3>
-                <p>Content of Article 3...</p>
-            </div>
-            <div class="article">
-                <h3>Article 4 Title</h3>
-                <p>Content of Article 4...</p>
-            </div>
-            <div class="article">
-                <h3>Article 5 Title</h3>
-                <p>Content of Article 5...</p>
-            </div>
+
+        <div class="row mt-4 contentwiki">
+            <?php foreach ($articles as $article) : ?>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"><?= $article['article_title']; ?></h3>
+                            <h6 class="card-subtitle mb-2 text-muted"><?= $article['article_content']; ?></h6>
+                            <p class="card-text"><strong>Tags:</strong> <?= $article['article_tags']; ?></p>
+                            <p class="card-text"><strong>Categorie:</strong> <?= $article['article_categorie']; ?></p>
+                            <p class="card-text"><small class="text-muted"><?= $article['create_at']; ?></small></p>
+                            <button class="btn btn-success">Modifier</button>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
-    </div>
+
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

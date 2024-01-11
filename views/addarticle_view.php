@@ -60,7 +60,7 @@
 
                 </select>
             </div>
-            <button class="buttonsub" name="articleSubmit" id="buttom">Submit</button>
+            <button type="submit" class="buttonsub" name="articleSubmit" id="buttom">Submit</button>
         </form>
     </div>
 

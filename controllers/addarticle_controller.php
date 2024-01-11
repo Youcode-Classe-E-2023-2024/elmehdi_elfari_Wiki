@@ -10,16 +10,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['articleSubmit'])) {
 }
 
 $articles = $article->getAllArticles();
-
-
-if ($articles) {
-    foreach ($articles as $article) {
-        $affiche = "<h2>" . $article['article_title'] . "</h2>";
-        $affiche = "<p>" . $article['article_content'] . "</p>";
-        $affiche = "<p>Tags: " . $article['article_tags'] . "</p>";
-        $affiche = "<p>Category: " . $article['article_categorie'] . "</p>";
-        "<hr>";
-    }
-} else {
-    echo "No articles found.";
-}

@@ -11,20 +11,6 @@
         .card-content {
             display: none;
         }
-
-        .card {
-            width: 70%;
-            margin: auto;
-        }
-
-        .contentCard {
-            margin-top: 4rem;
-        }
-
-        .buttonsub:hover {
-            color: white;
-            text-decoration: none;
-        }
     </style>
 </head>
 
@@ -35,6 +21,8 @@
             <li><a class="list" href="index.php?page=wiki">Wiki</a></li>
             <li><a class="list" href="index.php?page=signup">Sign Up</a></li>
             <li><a class="list" href="index.php?page=signin">Sign In</a></li>
+            <li><a class="list" href="logout.php">Logout</a></li>
+
         </ul>
     </nav>
     <div class="container mt-4">
@@ -56,9 +44,9 @@
             </div>
         </div>
 
-        <div class="row mt-4 contentwiki">
+        <div class="row mt-4 contentwiki ">
             <?php foreach ($articles as $article) : ?>
-                <div class="col-12 mb-3">
+                <div class="col-6 mb-3">
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title"><?= $article['article_title']; ?></h3>
@@ -122,12 +110,6 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="row mt-4">
-            <div class="col-md-12 text-center">
-                <a href="index.php?page=allofarticles" class="btn btn-primary">All Articles</a>
-            </div>
-        </div>
-
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

@@ -6,7 +6,7 @@ body {
 nav {
     background-color: #333;
     padding: 10px;
-    height: 100px;
+    height: 60px;
 }
 
 nav ul {
@@ -57,38 +57,44 @@ nav ul li {
     padding: 15px;
 }
 
-nav {
-    height: 3.6rem;
-    background-color: #333;
-    padding: 10px;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.search-form {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
+    justify-content: center;
 }
 
-nav ul li {
-    margin: 0;
+.navigation {
+    height: 2rem;
+    background-color: #333;
+    height: 60px;
+}
+
+.content-brief {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .list {
-    color: white;
-}
-
-.list:hover {
     text-decoration: none;
     color: white;
 }
 
-.search-form {
-    display: flex;
-    justify-content: center;
+.btn-add-article {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-add-article:hover {
+    background-color: #45a049;
 }
 
 .search-form input[type="search"] {
@@ -116,7 +122,7 @@ nav ul li {
     text-decoration: none;
     color: white;
     margin: 0 auto 1rem;
-    background-color: blue;
+    background-color: #037cb8;
     width: 12rem;
 }
 

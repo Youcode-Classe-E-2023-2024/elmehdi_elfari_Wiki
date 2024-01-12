@@ -1,7 +1,7 @@
 <?php
 $article = new Article('articles');
 
-$articles = $article->getAllArticles();
+$articles = $article->getAllArticless();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['articleDelete'])) {
     extract($_POST);

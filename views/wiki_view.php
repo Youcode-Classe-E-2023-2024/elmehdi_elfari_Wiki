@@ -25,6 +25,10 @@
             color: white;
             text-decoration: none;
         }
+
+        .artAll {
+            margin-bottom: 2rem;
+        }
     </style>
 </head>
 
@@ -123,7 +127,7 @@
             <?php endforeach; ?>
         </div>
         <div class="row mt-4">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center artAll">
                 <a href="index.php?page=allofarticles" class="btn btn-primary">All Articles</a>
             </div>
         </div>

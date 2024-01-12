@@ -113,13 +113,7 @@
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-        <script>
-            function toggleContent(button) {
-                const card = button.closest('.card');
-                const content = card.querySelector('.card-content');
-                content.style.display = (content.style.display === 'none') ? 'block' : 'none';
-            }
-        </script>
+
 </body>
 
 </html>

@@ -87,7 +87,7 @@
                             </div>
 
                             <!-- "Supprimer" button -->
-                            <form action="index.php?page=wiki" method="post">
+                            <form action="index.php?page=home" method="post">
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?= $article['article_id']; ?>">
                                     Modifier
                                 </button>

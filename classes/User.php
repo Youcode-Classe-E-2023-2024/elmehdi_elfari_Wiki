@@ -51,13 +51,21 @@ class User extends Database
     {
         $this->query("SELECT * FROM $this->tableName WHERE email = :email");
         $this->bind(':email', $email);
-        $this->execute();
         $result = $this->single();
+        if ($result) {
+            if (password_verify($password, $result['password'])) {
+                $_SESSION['user_id'] = $result['user_id'];
+                $_SESSION['password'] = $result['password'];
+                $_SESSION['firstname'] = $result['firstname'];
+                $_SESSION['lastname'] = $result['lastname'];
+                $_SESSION['email'] = $result['email'];
 
-        if ($result && password_verify($password, $result['password'])) {
-            return $result;
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            return null;
         }
     }
 

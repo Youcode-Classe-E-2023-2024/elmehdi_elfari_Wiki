@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="tags" class="mb-2">Select Tags</label>
-                <select class="form-control" id="tags" name="tags" multiple>
+                <select class="form-control" id="tags" name="tags[]" multiple>
                     <option value="Physics">Physics</option>
                     <option value="Biology">Biology</option>
                     <option value="Chemistry">Chemistry</option>

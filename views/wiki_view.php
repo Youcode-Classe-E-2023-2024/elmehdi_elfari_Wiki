@@ -4,57 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <!-- Bootstrap CSS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* Additional styles */
-        .article {
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
-            padding: 15px;
+        .card-content {
+            display: none;
         }
 
-        nav {
-            background-color: #333;
-            padding: 10px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-        }
-
-        nav ul li {
-            margin: 0;
-        }
-
-        .list {
-            color: white;
-        }
-
-        .list:hover {
-            text-decoration: none;
-            color: white;
-        }
-
-        .search-form {
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Set search input width to 70% */
-        .search-form input[type="search"] {
+        .card {
             width: 70%;
+            margin: auto;
         }
 
-        @media (max-width: 576px) {
-            .search-form {
-                justify-content: flex-start;
-            }
+        .contentCard {
+            margin-top: 4rem;
+        }
+
+        .buttonsub:hover {
+            color: white;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -71,54 +40,98 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-6 search-form">
-                <!-- Search Bar -->
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
             <div class="col-md-6 text-right">
-                <!-- Sign Up / Sign In Buttons -->
                 <a href="index.php?page=signup" class="btn btn-outline-success mr-2">Sign Up</a>
                 <a href="index.php?page=signin" class="btn btn-outline-primary">Sign In</a>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-12 text-right">
-                <!-- Add New Article Button -->
                 <a href="index.php?page=addarticle" class="btn btn-primary">Add New Article</a>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <!-- Displaying 5 Articles -->
-                <div class="article">
-                    <h3>Article 1 Title</h3>
-                    <p>Content of Article 1...</p>
-                </div>
-                <div class="article">
-                    <h3>Article 2 Title</h3>
-                    <p>Content of Article 2...</p>
-                </div>
-                <div class="article">
-                    <h3>Article 3 Title</h3>
-                    <p>Content of Article 3...</p>
-                </div>
-                <div class="article">
-                    <h3>Article 4 Title</h3>
-                    <p>Content of Article 4...</p>
-                </div>
-                <div class="article">
-                    <h3>Article 5 Title</h3>
-                    <p>Content of Article 5...</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <div class="row mt-4 contentwiki">
+            <?php foreach ($articles as $article) : ?>
+                <div class="col-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"><?= $article['article_title']; ?></h3>
+                            <div class="card-content">
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $article['article_content']; ?></h6>
+                                <p class="card-text"><strong>Tags:</strong> <?= $article['article_tags']; ?></p>
+                                <p class="card-text"><strong>Categorie:</strong> <?= $article['article_categorie']; ?></p>
+                                <p class="card-text"><small class="text-muted">Created: <?= $article['create_at']; ?></small></p>
+                            </div>
+                            <div class="modal fade" id="editModal<?= $article['article_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel<?= $article['article_id']; ?>" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editModalLabel<?= $article['article_id']; ?>">Modifier l'article</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="index.php?page=wiki" method="post">
+                                                <div class="form-group">
+                                                    <label for="editTitle">Title:</label>
+                                                    <input type="text" class="form-control" id="editTitle" name="editTitle" value="<?= $article['article_title']; ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editContent">Content:</label>
+                                                    <textarea class="form-control" id="editContent" name="editContent"><?= $article['article_content']; ?></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editTags">Tags:</label>
+                                                    <input type="text" class="form-control" id="editTags" name="editTags" value="<?= $article['article_tags']; ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editCategory">Category:</label>
+                                                    <input type="text" class="form-control" id="editCategory" name="editCategory" value="<?= $article['article_categorie']; ?>">
+                                                </div>
+                                                <input type="hidden" name="articleId" value="<?= $article['article_id']; ?>">
+                                                <input type="hidden" name="modificationDate" value="<?= date('Y-m-d H:i:s'); ?>">
+                                                <button type="submit" name="updateArticle" class="btn btn-primary">Save Changes</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- "Supprimer" button -->
+                            <form action="index.php?page=wiki" method="post">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?= $article['article_id']; ?>">
+                                    Modifier
+                                </button>
+                                <input type="hidden" name="editId" value="<?= $article['article_id']; ?>">
+
+
+                                <button type="submit" name="articleDelete" class="btn btn-danger">Supprimer</button>
+                                <input type="hidden" name="articleId" value="<?= $article['article_id']; ?>">
+                            </form>
+                        </div>
+                        <button class="btn btn-link btn-toggle-content" onclick="toggleContent(this)">Toggle Content</button>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function toggleContent(button) {
+                const card = button.closest('.card');
+                const content = card.querySelector('.card-content');
+                content.style.display = (content.style.display === 'none') ? 'block' : 'none';
+            }
+        </script>
 </body>
 
 </html>

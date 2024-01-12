@@ -96,16 +96,33 @@ nav ul li {
 }
 
 .buttonsub {
-    background-color: green;
+    background-color: rgb(45, 105, 45);
     padding: 0.6rem;
     border-radius: 8px;
     color: white;
-
 }
 
-.buttonsub:hover {
-    color: white;
+.buttonsub a {
+    color: #ccc;
     text-decoration: none;
+    border: none;
+}
+
+.card-content {
+    display: none;
+}
+
+.btn-toggle-content {
+    text-decoration: none;
+    color: white;
+    margin: 0 auto 1rem;
+    background-color: blue;
+    width: 12rem;
+}
+
+.btn-toggle-content:hover {
+    text-decoration: none;
+    color: white;
 }
 
 @media (max-width: 576px) {

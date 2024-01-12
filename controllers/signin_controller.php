@@ -2,6 +2,8 @@
 $unsuccessfulmsg = '';
 
 if (isset($_POST['submit'])) {
+
+
     $email = htmlspecialchars(trim(strtolower($_POST['email'])));
     $password = htmlspecialchars(trim(strtolower($_POST['password'])));
 
@@ -20,8 +22,18 @@ if (isset($_POST['submit'])) {
     $logged = user::signin($password, $email);
 
     if ($logged === true) {
-        header("Location: index.php?page=dashboard");
-        exit;
+        $isAdmin = user::isEmailAdmin($email);
+
+
+        if ($isAdmin) {
+
+            header("Location: index.php?page=dashboard");
+            exit;
+        } else {
+
+            header("Location: index.php?page=home");
+            exit;
+        }
     } elseif ($logged === 0) {
         header("Location: index.php?page=signin&error=passwordwrong");
         exit;

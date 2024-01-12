@@ -122,6 +122,11 @@
                 </div>
             <?php endforeach; ?>
         </div>
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <a href="index.php?page=allofarticles" class="btn btn-primary">All Articles</a>
+            </div>
+        </div>
 
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

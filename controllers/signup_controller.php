@@ -1,4 +1,5 @@
 <?php
+$user = new User('users');
 if (isset($_POST['submit'])) {
 
     $firstName = $_POST['firstname'];
@@ -6,6 +7,7 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    user::insert($firstName, $lastName, $password, $email);
+    $signupModel = new SignupModel($user);
+    $signupModel->insertModel($firstName, $lastName, $password, $email);
     header("location:index.php?page=signin");
 }

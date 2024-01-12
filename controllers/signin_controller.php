@@ -1,5 +1,6 @@
 <?php
 $unsuccessfulmsg = '';
+$user = new User('users');
 
 if (isset($_POST['submit'])) {
 
@@ -19,18 +20,16 @@ if (isset($_POST['submit'])) {
         $passmsg = '';
     }
 
-    $logged = user::signin($password, $email);
+    $signinModel = new SigninModel($user);
+
+    $logged = $signinModel->signinModel($password, $email);
 
     if ($logged === true) {
-        $isAdmin = user::isEmailAdmin($email);
-
-
+        $isAdmin = $signinModel->isEmailAdminModel($email);
         if ($isAdmin) {
-
             header("Location: index.php?page=dashboard");
             exit;
         } else {
-
             header("Location: index.php?page=home");
             exit;
         }

@@ -34,6 +34,13 @@ class Article extends Database
         return $this->resultSet();
     }
 
+    public function getAllArticless()
+    {
+        $this->query("SELECT * FROM $this->tableName ORDER BY create_at DESC ");
+        $this->execute();
+        return $this->resultSet();
+    }
+
     public function getArticleById($articleId)
     {
         $this->query("SELECT * FROM $this->tableName WHERE id = :id");

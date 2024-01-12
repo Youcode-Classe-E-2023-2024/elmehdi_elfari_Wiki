@@ -62,10 +62,11 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title"><?= $article['article_title']; ?></h3>
+                            <p class="card-text"><strong>Tags:</strong> <?= $article['article_tags']; ?></p>
+                            <p class="card-text"><strong>Categorie:</strong> <?= $article['article_categorie']; ?></p>
                             <div class="card-content">
                                 <h6 class="card-subtitle mb-2 text-muted"><?= $article['article_content']; ?></h6>
-                                <p class="card-text"><strong>Tags:</strong> <?= $article['article_tags']; ?></p>
-                                <p class="card-text"><strong>Categorie:</strong> <?= $article['article_categorie']; ?></p>
+
                                 <p class="card-text"><small class="text-muted">Created: <?= $article['create_at']; ?></small></p>
                             </div>
                             <div class="modal fade" id="editModal<?= $article['article_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel<?= $article['article_id']; ?>" aria-hidden="true">
@@ -120,6 +121,11 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <a href="index.php?page=allofarticles" class="btn btn-primary">All Articles</a>
+            </div>
         </div>
 
 

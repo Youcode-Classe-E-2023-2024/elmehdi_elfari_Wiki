@@ -3,11 +3,6 @@ include 'Database.php';
 
 class User extends Database
 {
-    private $id;
-    private $email;
-    private $firstName;
-    private $lastName;
-    private $password;
 
     public function __construct($tableName)
     {
@@ -26,7 +21,7 @@ class User extends Database
             $role = 'author';
         }
 
-        $this->query("INSERT INTO users (firstname, lastname, password, email, role) VALUES (:firstName, :lastName, :hashedPassword, :email, :role)");
+        $this->query("INSERT INTO $this->tableName (firstname, lastname, password, email, role) VALUES (:firstName, :lastName, :hashedPassword, :email, :role)");
         $this->bind(':firstName', $firstName);
         $this->bind(':lastName', $lastName);
         $this->bind(':hashedPassword', $hashedPassword);
@@ -35,12 +30,15 @@ class User extends Database
         $this->execute();
     }
 
+    /** Check if Email Belongs To admin: 
+     * @param string $email
+     */
     public function isEmailAdmin($email)
     {
-        $this->query("SELECT role FROM users WHERE email = :email");
+        $this->query("SELECT role FROM $this->tableName WHERE email = :email");
         $this->bind(':email', $email);
         $this->execute();
-        $result = $this->stmt->single();
+        $result = $this->single();
 
         if ($result && $result['role'] === 'admin') {
             return true;
@@ -51,15 +49,23 @@ class User extends Database
 
     public function signin($password, $email)
     {
-        $this->query("SELECT * FROM users WHERE email = :email");
+        $this->query("SELECT * FROM $this->tableName WHERE email = :email");
         $this->bind(':email', $email);
-        $this->stmt->execute();
-        $result = $this->stmt->single();
+        $result = $this->single();
+        if ($result) {
+            if (password_verify($password, $result['password'])) {
+                $_SESSION['user_id'] = $result['user_id'];
+                $_SESSION['password'] = $result['password'];
+                $_SESSION['firstname'] = $result['firstname'];
+                $_SESSION['lastname'] = $result['lastname'];
+                $_SESSION['email'] = $result['email'];
 
-        if ($result && password_verify($password, $result['password'])) {
-            return true;
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            return null;
         }
     }
 

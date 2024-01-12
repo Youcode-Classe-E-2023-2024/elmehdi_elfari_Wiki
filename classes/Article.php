@@ -29,7 +29,7 @@ class Article extends Database
      */
     public function getAllArticles()
     {
-        $this->query("SELECT * FROM $this->tableName");
+        $this->query("SELECT * FROM $this->tableName ORDER BY create_at DESC LIMIT 5");
         $this->execute();
         return $this->resultSet();
     }
@@ -44,7 +44,7 @@ class Article extends Database
 
     public function updateArticle($articleId, $title, $content, $tags, $categories)
     {
-        $this->query("UPDATE $this->tableName SET article_title = :title, article_content = :content, article_tags = :tags, article_categorie = :categories WHERE id = :id");
+        $this->query("UPDATE $this->tableName SET article_title = :title, article_content = :content, article_tags = :tags, article_categorie = :categories WHERE article_id = :id");
         $this->bind(':id', $articleId);
         $this->bind(':title', $title);
         $this->bind(':content', $content);

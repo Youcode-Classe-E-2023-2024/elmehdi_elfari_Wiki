@@ -62,13 +62,6 @@ nav ul li {
     justify-content: center;
 }
 
-.library-image {
-    max-width: 800px;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-}
-
 .navigation {
     height: 2rem;
     background-color: #333;

@@ -11,6 +11,20 @@
         .card-content {
             display: none;
         }
+
+        .card {
+            width: 70%;
+            margin: auto;
+        }
+
+        .contentCard {
+            margin-top: 4rem;
+        }
+
+        .buttonsub:hover {
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -44,7 +58,7 @@
 
         <div class="row mt-4 contentwiki">
             <?php foreach ($articles as $article) : ?>
-                <div class="col-md-4 mb-3">
+                <div class="col-12 mb-3">
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title"><?= $article['article_title']; ?></h3>
@@ -95,12 +109,14 @@
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?= $article['article_id']; ?>">
                                     Modifier
                                 </button>
+                                <input type="hidden" name="editId" value="<?= $article['article_id']; ?>">
+
 
                                 <button type="submit" name="articleDelete" class="btn btn-danger">Supprimer</button>
                                 <input type="hidden" name="articleId" value="<?= $article['article_id']; ?>">
                             </form>
                         </div>
-                        <button class="btn btn-link" onclick="toggleContent(this)">Toggle Content</button>
+                        <button class="btn btn-link btn-toggle-content" onclick="toggleContent(this)">Toggle Content</button>
                     </div>
                 </div>
             <?php endforeach; ?>

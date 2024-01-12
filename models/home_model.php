@@ -1,13 +1,27 @@
 <?php
 
+class WikiModel
+{
+    private $article;
 
-//$user = new User(1);
-//$user->username = 'Baz';
-//$user->email = 'Baz';
-//$var = $user->email;
-//$user->setPassword('123');
-//$user->edit();
-//dd($user);
+    public function __construct(Article $article)
+    {
+        $this->article = $article;
+    }
 
+    /** Method pour inserer les articles:
+     * @param string $title
+     * @param string $content
+     * @param string $tags
+     * @param string $categories
+     */
+    public function deleteArticle($articleId)
+    {
+        $this->article->deleteArticle($articleId);
+    }
 
-//dd($users);
+    public function updateArticle($articleId, $title, $content, $tags, $categories)
+    {
+        $this->article->updateArticle($articleId, $title, $content, $tags, $categories);
+    }
+}

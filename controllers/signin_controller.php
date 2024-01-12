@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
             header("Location: index.php?page=home");
             exit;
         }
-    } elseif ($logged === 0) {
+    } elseif ($logged === false) {
         header("Location: index.php?page=signin&error=passwordwrong");
         exit;
     } elseif ($logged === null) {

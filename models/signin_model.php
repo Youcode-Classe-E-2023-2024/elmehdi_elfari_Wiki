@@ -15,11 +15,11 @@ class SigninModel
      */
     public function signinModel($password, $email)
     {
-        $this->user->signin($password, $email);
+        return $this->user->signin($password, $email);
     }
 
     public function isEmailAdminModel($email)
     {
-        $this->user->isEmailAdmin($email);
+        return $this->user->isEmailAdmin($email);
     }
 }

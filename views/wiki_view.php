@@ -21,6 +21,8 @@
             <li><a class="list" href="index.php?page=wiki">Wiki</a></li>
             <li><a class="list" href="index.php?page=signup">Sign Up</a></li>
             <li><a class="list" href="index.php?page=signin">Sign In</a></li>
+            <li><a class="list" href="logout.php">Logout</a></li>
+
         </ul>
     </nav>
     <div class="container mt-4">

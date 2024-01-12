@@ -108,9 +108,21 @@ nav ul li {
     border: none;
 }
 
-.buttonsub:hover {
-    color: white;
+.card-content {
+    display: none;
+}
+
+.btn-toggle-content {
     text-decoration: none;
+    color: white;
+    margin: 0 auto 1rem;
+    background-color: blue;
+    width: 12rem;
+}
+
+.btn-toggle-content:hover {
+    text-decoration: none;
+    color: white;
 }
 
 @media (max-width: 576px) {

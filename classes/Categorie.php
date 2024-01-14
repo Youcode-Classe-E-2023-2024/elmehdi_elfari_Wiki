@@ -21,6 +21,12 @@ class Categorie extends Database
         $this->bind(':id', $categorie_id);
         $this->execute();
     }
+    public function updateCategorie($categorieId, $categorie_name)
+    {
+        $this->query("UPDATE $this->tableName SET categorie_name = categorie_name WHERE categorie_id = id");
+        $this->bind(':categorie_name', $categorie_name);
+        $this->execute();
+    }
     public function getCategorie()
     {
         $this->query("SELECT * FROM $this->tableName");

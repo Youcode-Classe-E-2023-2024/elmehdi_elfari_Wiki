@@ -1,5 +1,4 @@
 <?php
-include 'Database.php';
 
 class User extends Database
 {
@@ -73,5 +72,59 @@ class User extends Database
     {
         $this->query("SELECT * FROM $this->tableName");
         return $this->resultSet();
+    }
+
+    public function getUserById($id)
+    {
+        $this->query("SELECT * FROM $this->tableName WHERE id = :id");
+        $this->bind(':id', $id);
+        return $this->single();
+    }
+
+    public function updateUser($id, $firstName, $lastName, $email, $password)
+    {
+        $user = $this->getUserById($id);
+        $firstName = $firstName === '' ? $user['firstname'] : $firstName;
+        $lastName = $lastName === '' ? $user['lastname'] : $lastName;
+        $email = $email === '' ? $user['email'] : $email;
+        $password = $password === '' ? $user['password'] : $password;
+        $this->query("UPDATE $this->tableName 
+                    SET firstname = :firstname,
+                    lastname = :lastname,
+                    email = :email,
+                    password = :password");
+        $this->bind(':firstname', $firstName);
+        $this->bind(':lastname', $lastName);
+        $this->bind(':email', $email);
+        $this->bind(':password', $password);
+        $this->execute();
+    }
+
+    public function softDeleteUser($id)
+    {
+        $this->query("UPDATE $this->tableName 
+                        SET supprimer = true 
+                        WHERE id = :id");
+        $this->bind(':id', $id);
+        $this->execute();
+    }
+
+    public function countAllUsers()
+    {
+        $this->query("SELECT * FROM $this->tableName");
+        $this->execute();
+        return $this->rowCount();
+    }
+    public function countAllAdminUsers()
+    {
+        $this->query("SELECT * FROM $this->tableName WHERE role = 'admin'");
+        $this->execute();
+        return $this->rowCount();
+    }
+    public function countAllAuthorUsers()
+    {
+        $this->query("SELECT * FROM $this->tableName WHERE role <> 'admin'");
+        $this->execute();
+        return $this->rowCount();
     }
 }

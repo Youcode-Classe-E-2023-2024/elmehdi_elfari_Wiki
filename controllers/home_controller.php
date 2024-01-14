@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['articleDelete'])) {
 
     $articleModel = new WikiModel($article);
     $articleModel->deleteArticle($articleId);
-    header("Location: index.php?addarticle");
+    header("Location: index.php?page=addarticle");
     exit();
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateArticle'])) {

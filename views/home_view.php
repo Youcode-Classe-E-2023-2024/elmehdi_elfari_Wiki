@@ -24,9 +24,7 @@
         <ul>
             <li><a class="list" href="index.php?page=home">Home</a></li>
             <li><a class="list" href="index.php?page=wiki">Wiki</a></li>
-            <li><a class="list" href="index.php?page=signup">Sign Up</a></li>
-            <li><a class="list" href="index.php?page=signin">Sign In</a></li>
-            <li><a class="list" href="logout.php">Logout</a></li>
+            <li><a class="list" href="index.php?page=logout">Logout</a></li>
 
         </ul>
     </nav>

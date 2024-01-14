@@ -69,12 +69,12 @@
                                                     <tr>
                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                             <div class="flex cursor-pointer">
-                                                                <span class="mr-2">PRODUCT NAME</span>
+                                                                <span class="mr-2">Categorie_ID</span>
                                                             </div>
                                                         </th>
                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                             <div class="flex cursor-pointer">
-                                                                <span class="mr-2">Stock</span>
+                                                                <span class="mr-2">Categorie_Name</span>
                                                             </div>
                                                         </th>
                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -93,17 +93,17 @@
                                                             <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                                                 <p><?= $tag['tag_name']; ?></p>
                                                             </td>
+                                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                                                                <form action="index.php?page=tags" method="post">
+                                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?= $tag['tag_id']; ?>">
+                                                                        Modifier
+                                                                    </button>
+                                                                    <input type="hidden" name="editId" value="<?= $tag['tag_id']; ?>">
 
-                                                            <form action="index.php?page=tags" method="post">
-                                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?= $tag['tag_id']; ?>">
-                                                                    Modifier
-                                                                </button>
-                                                                <input type="hidden" name="editId" value="<?= $tag['tag_id']; ?>">
 
-
-                                                                <button type="submit" name="tagDelete" class="btn btn-danger">Supprimer</button>
-                                                                <input type="hidden" name="tagId" value="<?= $tag['tag_id']; ?>">
-                                                            </form>
+                                                                    <button type="submit" name="tagDelete" class="btn btn-danger">Supprimer</button>
+                                                                    <input type="hidden" name="tagId" value="<?= $tag['tag_id']; ?>">
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach ?>
@@ -142,11 +142,16 @@
         // Ajouter le tag (vous pouvez personnaliser cette partie selon vos besoins)
         addTagButton.addEventListener('click', () => {
             const tagValue = tagInput.value.trim();
+            const isUpdate = document.getElementById('updateTagInput').value === '1';
 
             if (tagValue !== '') {
-                // Add the tag to your tag management system
-                console.log(`Tag ajouté : ${tagValue}`);
-
+                if (isUpdate) {
+                    // Update the tag (you may want to add more logic here)
+                    console.log(`Tag mis à jour : ${tagValue}`);
+                } else {
+                    // Add the tag to your tag management system
+                    console.log(`Tag ajouté : ${tagValue}`);
+                }
                 // Close the modal
                 tagModal.classList.add('hidden');
             }

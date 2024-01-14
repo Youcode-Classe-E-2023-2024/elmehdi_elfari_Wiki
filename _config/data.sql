@@ -48,8 +48,8 @@ CREATE TABLE `articles`
     PRIMARY KEY (`id`),
     KEY `FK_1` (`id_user`),
     CONSTRAINT `FK_1` FOREIGN KEY `FK_1` (`id_user`) REFERENCES `users` (`id`),
-    KEY `FK_2` (`id_category`),
-    CONSTRAINT `FK_2` FOREIGN KEY `FK_2` (`id_category`) REFERENCES `categories` (`id`)
+    KEY `FK_2` (`id_category`) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT `FK_2` FOREIGN KEY `FK_2` (`id_category`) REFERENCES `categories` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- ************************************** `articles_tags`
@@ -62,5 +62,5 @@ CREATE TABLE `articles_tags`
     KEY `FK_1` (`id_article`),
     CONSTRAINT `FK_3` FOREIGN KEY `FK_1` (`id_article`) REFERENCES `articles` (`id`),
     KEY `FK_2` (`id_tag`),
-    CONSTRAINT `FK_4` FOREIGN KEY `FK_2` (`id_tag`) REFERENCES `tags` (`id`)
+    CONSTRAINT `FK_4` FOREIGN KEY `FK_2` (`id_tag`) REFERENCES `tags` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
 );

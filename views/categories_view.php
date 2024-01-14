@@ -56,6 +56,7 @@
                     </form>
                 </div>
 
+
                 <div class="col-span-12 mt-5">
                     <div class="grid gap-2 grid-cols-1 lg:grid-cols-1">
                         <div class="bg-white p-4 shadow-lg rounded-lg">
@@ -70,12 +71,12 @@
                                                     <tr>
                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                             <div class="flex cursor-pointer">
-                                                                <span class="mr-2">PRODUCT NAME</span>
+                                                                <span class="mr-2">Categorie_ID</span>
                                                             </div>
                                                         </th>
                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                             <div class="flex cursor-pointer">
-                                                                <span class="mr-2">Stock</span>
+                                                                <span class="mr-2">Categorie_Name</span>
                                                             </div>
                                                         </th>
                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -99,7 +100,7 @@
                                                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?= $categorie['categorie_id']; ?>">
                                                                         Modifier
                                                                     </button>
-                                                                    <input type="hidden" name="editId" value="<?= $categorie['categorie_id']; ?>">
+                                                                    <input onclick="showPopUp" type="hidden" name="editId" value="<?= $categorie['categorie_id']; ?>">
 
 
                                                                     <button type="submit" name="categorieDelete" class="btn btn-danger">Supprimer</button>
@@ -152,4 +153,12 @@
                 categorieModal.classList.add('hidden');
             }
         });
+
+        function showPopUp() {
+            document.getElementsByClassName('categorieModalEdit').classList.remove('hidden');
+        }
+
+        function hidePopUp() {
+            document.getElementsByClassName('closeModalButtonEditer').classList.add('hidden');
+        }
     </script>

@@ -8,26 +8,23 @@ class TagModel
         $this->tag = $tag;
     }
 
-    /** Method pour inserer les tags:
-     * @param string $tag_name
-     */
     public function insert($tag_name)
     {
         $this->tag->insert($tag_name);
     }
 
-    public function gettag()
+    public function getTag()
     {
         return $this->tag->getTag();
     }
 
-    public function deleteTag($tagId)
+    public function deleteTags($tagId)
     {
-        $this->tag->deleteTag($tagId);
+        $this->tag->deleteTags($tagId);
     }
 
-    public function updateTag($tagId, $tag_name)
+    public function updateTags($tagId, $tag_name)
     {
-        $this->tag->updateTag($tageId, $tag_name);
+        $this->tag->updateTags($tagId, $tag_name);
     }
 }

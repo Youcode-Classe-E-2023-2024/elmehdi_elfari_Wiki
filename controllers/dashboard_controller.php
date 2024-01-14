@@ -12,6 +12,7 @@ if (isset($_SESSION['user_id'])) {
     $totalAuthors = $user->countAllAuthorUsers();
     $dashboardModel = new dashboardModel($artcile);
     $totalArticles = $dashboardModel->getAllArticles();
+    $articles = $dashboardModel->getArticles();
 } else {
     header('Location: index.php?page=signin');
     die();

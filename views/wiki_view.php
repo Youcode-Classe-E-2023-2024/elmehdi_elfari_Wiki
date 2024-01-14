@@ -19,8 +19,6 @@
         <ul>
             <li><a class="list" href="index.php?page=home">Home</a></li>
             <li><a class="list" href="index.php?page=wiki">Wiki</a></li>
-            <li><a class="list" href="index.php?page=signup">Sign Up</a></li>
-            <li><a class="list" href="index.php?page=signin">Sign In</a></li>
             <li><a class="list" href="logout.php">Logout</a></li>
 
         </ul>
@@ -32,10 +30,6 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                 </form>
-            </div>
-            <div class="col-md-6 text-right">
-                <a href="index.php?page=signup" class="btn btn-outline-success mr-2">Sign Up</a>
-                <a href="index.php?page=signin" class="btn btn-outline-primary">Sign In</a>
             </div>
         </div>
         <div class="row mt-4">
@@ -93,7 +87,6 @@
                                 </div>
                             </div>
 
-                            <!-- "Supprimer" button -->
                             <form action="index.php?page=wiki" method="post">
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?= $article['article_id']; ?>">
                                     Modifier

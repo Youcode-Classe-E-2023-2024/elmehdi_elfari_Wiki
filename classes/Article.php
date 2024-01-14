@@ -27,14 +27,14 @@ class Article extends Database
     /** Retrieves all articles from the database
      * @return array Associative array containing all articles
      */
-    public function getAllArticles()
+    public function getFiveLastArticles()
     {
         $this->query("SELECT * FROM $this->tableName ORDER BY create_at DESC LIMIT 5");
         $this->execute();
         return $this->resultSet();
     }
 
-    public function getAllArticless()
+    public function getAllArticles()
     {
         $this->query("SELECT * FROM $this->tableName ORDER BY create_at DESC ");
         $this->execute();
@@ -65,5 +65,18 @@ class Article extends Database
         $this->query("DELETE FROM $this->tableName WHERE article_id  = :id");
         $this->bind(':id', $articleId);
         $this->execute();
+    }
+    public function countAllArticles()
+    {
+        $this->query("SELECT * FROM $this->tableName");
+        $this->execute();
+        return $this->rowCount();
+    }
+
+    public function countAllPublicArticles()
+    {
+        $this->query("SELECT * FROM $this->tableName WHERE status = published");
+        $this->execute();
+        return $this->rowCount();
     }
 }

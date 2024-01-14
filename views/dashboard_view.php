@@ -1,10 +1,3 @@
-<?php
-// if ($_SESSION['role'] != "admin") {
-//     header('location: index.php?pagr=home');
-// }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,14 +28,14 @@
                     </div>
                 </div>
                 <div class="manageTag mt-4">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
-                        Manage Tag
-                    </button>
+                    <a href="index.php?page=tags"><button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                            Manage Tag
+                        </button></a>
                 </div>
                 <div class="manageCategory mt-2">
-                    <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full">
-                        Manage Category
-                    </button>
+                    <a href="index.php?page=categories"><button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full">
+                            Manage Category
+                        </button></a>
                 </div>
                 <div class="manageArticle mt-2">
                     <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
@@ -167,16 +160,7 @@
                                                                             <span class="mr-2">Stock</span>
                                                                         </div>
                                                                     </th>
-                                                                    <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                                        <div class="flex cursor-pointer">
-                                                                            <span class="mr-2">STATUS</span>
-                                                                        </div>
-                                                                    </th>
-                                                                    <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                                        <div class="flex cursor-pointer">
-                                                                            <span class="mr-2">ACTION</span>
-                                                                        </div>
-                                                                    </th>
+
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="bg-white divide-y divide-gray-200">

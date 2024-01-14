@@ -19,7 +19,7 @@ class Article extends Database
         $this->query("INSERT INTO $this->tableName (article_title, article_content, article_tags, article_categorie) VALUES (:title, :content, :tags, :categories)");
         $this->bind(':title', $title);
         $this->bind(':content', $content);
-        $this->bind(':tags', $tags); // Corrected the typo here
+        $this->bind(':tags', $tags);
         $this->bind(':categories', $categories);
         $this->execute();
     }

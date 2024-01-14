@@ -21,6 +21,12 @@ class Tag extends Database
         $this->bind(':id', $tag_id);
         $this->execute();
     }
+    public function updateTags($tag_name)
+    {
+        $this->query("UPDATE $this->tableName SET ctag_name = tag_name WHERE tag_id = id");
+        $this->bind(':tag_name', $tag_name);
+        $this->execute();
+    }
     public function getTag()
     {
         $this->query("SELECT * FROM $this->tableName");
